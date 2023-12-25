@@ -2,8 +2,10 @@ package com.leonteqsecurity.WholesaleFoodStore.Controllers;
 
 import com.leonteqsecurity.WholesaleFoodStore.Models.Customer;
 import com.leonteqsecurity.WholesaleFoodStore.Models.FoodProduct;
+import com.leonteqsecurity.WholesaleFoodStore.Models.User;
 import com.leonteqsecurity.WholesaleFoodStore.Service.CustomerServices;
 import com.leonteqsecurity.WholesaleFoodStore.Service.FoodProductService;
+import com.leonteqsecurity.WholesaleFoodStore.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ public class FoodStoreController {
     private final FoodProductService foodProductService;
 
     private  final CustomerServices customerServices;
+    private  final UserService userService;
 
     @GetMapping("/foodproducts")
     public String getAllProducts(Model model) {
@@ -56,5 +59,17 @@ public class FoodStoreController {
     public String addProduct(@ModelAttribute FoodProduct product) {
         foodProductService.addProduct(product);
         return "redirect:/addProductForm";
+    }
+
+    @GetMapping("/addUserForm")
+    public String showAddUserForm(Model model) {
+        model.addAttribute("user", new User());
+        return "users/addUser";
+    }
+
+    @PostMapping("/addUser")
+    public String addUser(@ModelAttribute User user) {
+        userService.addUser(user);
+        return "redirect:/addUserForm";
     }
 }
