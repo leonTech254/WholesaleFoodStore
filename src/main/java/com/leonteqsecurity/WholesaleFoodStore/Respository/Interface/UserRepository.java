@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -17,7 +18,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAllUsers();
 
     @Query(value = "SELECT * FROM users WHERE id = :userId", nativeQuery = true)
-    User findUser(@Param("userId") Long userId);
+    User findUser(@Param("userId") int userId);
+    @Query(value = "SELECT * FROM users WHERE username = :username", nativeQuery = true)
+    Optional<User> userlogin(@Param("userId") String username);
 
     @Modifying
     @Transactional

@@ -78,4 +78,19 @@ public class FoodStoreController {
         model.addAttribute("users", userList);
         return "users/users";
     }
+
+    @GetMapping("/user/login")
+    public String USerLogin(Model model) {
+        model.addAttribute("user", new User());
+        return "users/userLogin";
+    }
+    @PostMapping("/userCheck")
+    public String USerProsess(@ModelAttribute User user) {
+        userService.loginUser(user);
+        return "redirect:/user/login";
+    }
+
+
+
+
 }
