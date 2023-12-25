@@ -1,5 +1,6 @@
 package com.leonteqsecurity.WholesaleFoodStore.Service;
 
+import com.leonteqsecurity.WholesaleFoodStore.Models.Role;
 import com.leonteqsecurity.WholesaleFoodStore.Models.User;
 import com.leonteqsecurity.WholesaleFoodStore.Respository.Interface.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class UserService {
     }
 
     public boolean addUser(User user) {
-        userRepository.addUser(user.getUsername(), user.getPassword(), user.getRole().name());
+        userRepository.addUser(user.getUsername(), user.getPassword(), String.valueOf(Role.User));
         return true;
     }
 }

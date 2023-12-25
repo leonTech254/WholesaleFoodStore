@@ -72,4 +72,10 @@ public class FoodStoreController {
         userService.addUser(user);
         return "redirect:/addUserForm";
     }
+    @GetMapping("/users")
+    public String getAllUSers(Model model) {
+        List<User> userList = userService.findAllUsers();
+        model.addAttribute("users", userList);
+        return "users/users";
+    }
 }
