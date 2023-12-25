@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -31,5 +33,28 @@ public class FoodStoreController {
         List<Customer> customerList = customerServices.findAllCustomers();
         model.addAttribute("customers", customerList);
         return "customer/index";
+    }
+
+    @GetMapping("/addCustomerForm")
+    public String showAddCustomerForm(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "customer/addCustomer";
+    }
+
+    @PostMapping("/addCustomer")
+    public String addCustomer(@ModelAttribute Customer customer) {
+        customerServices.addCustomer(customer);
+        return "redirect:/addCustomerForm";
+    }
+
+    @GetMapping("/addProductForm")
+    public String showAddProductForm(Model model) {
+        model.addAttribute("product", new FoodProduct());
+        return "Products/addProduct";
+    }
+    @PostMapping("/addProduct")
+    public String addProduct(@ModelAttribute FoodProduct product) {
+        foodProductService.addProduct(product);
+        return "redirect:/addProductForm";
     }
 }

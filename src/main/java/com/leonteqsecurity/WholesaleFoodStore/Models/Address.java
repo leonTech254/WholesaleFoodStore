@@ -18,4 +18,7 @@ public class Address {
     private String addressLine3;
     private String country;
     private String postCode;
+
+    public Address() {
+    }
 }

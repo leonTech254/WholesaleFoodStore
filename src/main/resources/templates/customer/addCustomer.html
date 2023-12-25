@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Customer Form</title>
+</head>
+<body>
+<h2>Add Customer</h2>
+<form action="/addCustomer" method="post" th:object="${customer}">
+    <label for="businessName">Business Name:</label>
+    <input type="text" id="businessName" name="businessName" th:field="*{businessName}" required><br>
+
+    <label for="addressLine1">Address Line 1:</label>
+    <input type="text" id="addressLine1" name="addressLine1" th:field="*{address.addressLine1}" required><br>
+
+    <label for="addressLine2">Address Line 2:</label>
+    <input type="text" id="addressLine2" name="addressLine2" th:field="*{address.addressLine2}"><br>
+
+    <label for="addressLine3">Address Line 3:</label>
+    <input type="text" id="addressLine3" name="addressLine3" th:field="*{address.addressLine3}"><br>
+
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country" th:field="*{address.country}" required><br>
+
+    <label for="postCode">Post Code:</label>
+    <input type="text" id="postCode" name="postCode" th:field="*{address.postCode}" required><br>
+
+    <label for="telephoneNumber">Telephone Number:</label>
+    <input type="text" id="telephoneNumber" name="telephoneNumber" th:field="*{telephoneNumber}" required><br>
+
+    <input type="submit" value="Add Customer">
+</form>
+</body>
+</html>

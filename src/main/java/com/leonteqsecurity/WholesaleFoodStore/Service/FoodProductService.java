@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class FoodProductService implements FoodProductDAO {
@@ -34,7 +36,8 @@ public class FoodProductService implements FoodProductDAO {
 
     @Override
     public boolean addProduct(FoodProduct foodProduct) {
-
+        String productId= UUID.randomUUID().toString().substring(0,6).replace("-","");
+        foodProduct.setSKU(productId);
         foodProductRespository.addProduct(foodProduct.getSKU(),foodProduct.getDescription(),foodProduct.getCategory(),foodProduct.getPrice());
         return  false;
     }
