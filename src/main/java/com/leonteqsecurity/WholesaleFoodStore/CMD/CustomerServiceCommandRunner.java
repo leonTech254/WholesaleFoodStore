@@ -4,21 +4,16 @@ import com.leonteqsecurity.WholesaleFoodStore.Models.Address;
 import com.leonteqsecurity.WholesaleFoodStore.Models.Customer;
 import com.leonteqsecurity.WholesaleFoodStore.Service.CustomerServices;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
-@Component
+@Service
 @AllArgsConstructor
-public class CustomerCommandRunner implements CommandLineRunner {
-
-    private final CustomerServices customerServices;
-
-    @Override
-    public void run(String... args) throws Exception {
+public class CustomerServiceCommandRunner {
+    private  final CustomerServices customerServices;
+    public void runMenus(){
         System.out.println("CUSTOMER MANAGEMENT SYSTEM");
         System.out.println("Choose from these options");
         System.out.println("__________________________________________");
@@ -33,7 +28,7 @@ public class CustomerCommandRunner implements CommandLineRunner {
 
         String userChoice;
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scannerNew = new Scanner(System.in);
         do {
             for (Map.Entry<Integer, String> entry : userMenu.entrySet()) {
                 int key = entry.getKey();
@@ -42,7 +37,7 @@ public class CustomerCommandRunner implements CommandLineRunner {
             }
 
             System.out.print("Enter your choice: ");
-            userChoice = scanner.nextLine();
+            userChoice = scannerNew.nextLine();
 
             switch (userChoice) {
                 case "1":
@@ -53,7 +48,7 @@ public class CustomerCommandRunner implements CommandLineRunner {
                 case "2":
                     System.out.println("Search customer by ID");
                     System.out.print("Enter customer ID: ");
-                    String customerId = scanner.nextLine();
+                    String customerId = scannerNew.nextLine();
                     try {
                         int id = Integer.parseInt(customerId);
                         Customer foundCustomer = customerServices.findCustomer(id);
@@ -71,25 +66,25 @@ public class CustomerCommandRunner implements CommandLineRunner {
                 case "3":
                     System.out.println("Add a new customer");
                     System.out.print("Enter business name: ");
-                    String businessName = scanner.nextLine();
+                    String businessName = scannerNew.nextLine();
 
                     System.out.print("Enter address line 1: ");
-                    String addressLine1 = scanner.nextLine();
+                    String addressLine1 = scannerNew.nextLine();
 
                     System.out.print("Enter address line 2: ");
-                    String addressLine2 = scanner.nextLine();
+                    String addressLine2 = scannerNew.nextLine();
 
                     System.out.print("Enter address line 3: ");
-                    String addressLine3 = scanner.nextLine();
+                    String addressLine3 = scannerNew.nextLine();
 
                     System.out.print("Enter country: ");
-                    String country = scanner.nextLine();
+                    String country = scannerNew.nextLine();
 
                     System.out.print("Enter post code: ");
-                    String postCode = scanner.nextLine();
+                    String postCode = scannerNew.nextLine();
 
                     System.out.print("Enter telephone number: ");
-                    String telephoneNumber = scanner.nextLine();
+                    String telephoneNumber = scannerNew.nextLine();
 
                     try {
                         Address address = new Address(addressLine1, addressLine2, addressLine3, country, postCode);
@@ -109,7 +104,7 @@ public class CustomerCommandRunner implements CommandLineRunner {
                 case "4":
                     System.out.println("Update a customer by ID");
                     System.out.print("Enter customer ID: ");
-                    String updateCustomerId = scanner.nextLine();
+                    String updateCustomerId = scannerNew.nextLine();
 
                     try {
                         int updateId = Integer.parseInt(updateCustomerId);
@@ -119,25 +114,25 @@ public class CustomerCommandRunner implements CommandLineRunner {
                             System.out.println("Found customer: " + existingCustomer.toString());
 
                             System.out.print("Enter new business name (or press Enter to keep existing): ");
-                            String newBusinessName = scanner.nextLine();
+                            String newBusinessName = scannerNew.nextLine();
 
                             System.out.print("Enter new address line 1 (or press Enter to keep existing): ");
-                            String newAddressLine1 = scanner.nextLine();
+                            String newAddressLine1 = scannerNew.nextLine();
 
                             System.out.print("Enter new address line 2 (or press Enter to keep existing): ");
-                            String newAddressLine2 = scanner.nextLine();
+                            String newAddressLine2 = scannerNew.nextLine();
 
                             System.out.print("Enter new address line 3 (or press Enter to keep existing): ");
-                            String newAddressLine3 = scanner.nextLine();
+                            String newAddressLine3 = scannerNew.nextLine();
 
                             System.out.print("Enter new country (or press Enter to keep existing): ");
-                            String newCountry = scanner.nextLine();
+                            String newCountry = scannerNew.nextLine();
 
                             System.out.print("Enter new post code (or press Enter to keep existing): ");
-                            String newPostCode = scanner.nextLine();
+                            String newPostCode = scannerNew.nextLine();
 
                             System.out.print("Enter new telephone number (or press Enter to keep existing): ");
-                            String newTelephoneNumber = scanner.nextLine();
+                            String newTelephoneNumber = scannerNew.nextLine();
 
                             boolean isUpdated = customerServices.updateCustomer(
                                     new Customer(
@@ -164,7 +159,7 @@ public class CustomerCommandRunner implements CommandLineRunner {
                 case "5":
                     System.out.println("Delete a customer by ID");
                     System.out.print("Enter customer ID: ");
-                    String deleteCustomerId = scanner.nextLine();
+                    String deleteCustomerId = scannerNew.nextLine();
 
                     try {
                         int deleteId = Integer.parseInt(deleteCustomerId);
@@ -189,7 +184,7 @@ public class CustomerCommandRunner implements CommandLineRunner {
             }
 
         } while (!userChoice.equals("6"));
-        // Close the scanner
-        scanner.close();
+
     }
+
 }

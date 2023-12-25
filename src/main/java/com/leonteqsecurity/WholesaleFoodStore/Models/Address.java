@@ -1,6 +1,7 @@
 package com.leonteqsecurity.WholesaleFoodStore.Models;
 
 
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 @Data
+@Embeddable
 public class Address {
     private String addressLine1;
     private String addressLine2;
