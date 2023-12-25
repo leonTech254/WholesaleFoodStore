@@ -2,7 +2,7 @@ package com.leonteqsecurity.WholesaleFoodStore.Service;
 
 import com.leonteqsecurity.WholesaleFoodStore.Models.FoodProduct;
 import com.leonteqsecurity.WholesaleFoodStore.Respository.Interface.FoodProductDAO;
-import com.leonteqsecurity.WholesaleFoodStore.Respository.Interface.FoodProductRespository;
+import com.leonteqsecurity.WholesaleFoodStore.Respository.Interface.FoodProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class FoodProductService implements FoodProductDAO {
-    private final FoodProductRespository foodProductRespository;
+    private final FoodProductRepository foodProductRespository;
     @Override
     public List<FoodProduct> findAllProducts() {
         return foodProductRespository.findAllProducts();
@@ -29,12 +29,13 @@ public class FoodProductService implements FoodProductDAO {
 
     @Override
     public boolean updateProduct(FoodProduct product) {
-        return foodProductRespository.updateProduct(product.getDescription(),product.getPrice());
+        return foodProductRespository.updateProduct(product.getDescription(),product.getPrice(),product.getId());
     }
 
     @Override
     public boolean addProduct(FoodProduct foodProduct) {
 
-        return foodProductRespository.addProduct(foodProduct.getSKU(),foodProduct.getDescription(),foodProduct.getCategory(),foodProduct.getPrice());
+        foodProductRespository.addProduct(foodProduct.getSKU(),foodProduct.getDescription(),foodProduct.getCategory(),foodProduct.getPrice());
+        return  false;
     }
 }
