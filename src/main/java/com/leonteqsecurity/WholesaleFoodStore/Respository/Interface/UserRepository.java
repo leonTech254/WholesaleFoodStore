@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query(value = "SELECT * FROM users", nativeQuery = true)
     List<User> findAllUsers();
@@ -20,7 +20,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "SELECT * FROM users WHERE id = :userId", nativeQuery = true)
     User findUser(@Param("userId") int userId);
     @Query(value = "SELECT * FROM users WHERE username = :username", nativeQuery = true)
-    Optional<User> userlogin(@Param("userId") String username);
+
+    Optional<User> userlogin(@Param("username") String username);
 
     @Modifying
     @Transactional
