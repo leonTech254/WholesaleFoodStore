@@ -1,66 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Food Products</title>
-    <link rel="stylesheet" href="../static/css/hello.css">
-
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwT"
-          crossorigin="anonymous">
-
-    <!-- Font Awesome CDN for icons -->
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-code.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
+<div class="container-wrapper">
+    <div class="banner">
+        <h1 class="heading-title">Whole Sale Food Product<br> <span class="b">Management System</span> </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda maxime quidem voluptatem nam voluptate, dolorem, perferendis quibusdam ducimus sit magnam suscipit a cum.
+            Incidunt asperiores consectetur pariatur ut esse
+            blanditiis!</p>
+        <div>
+            <a th:href="@{/deleteFoodProduct/{id}(id=${foodProduct.id})}" class="btn btn-danger btn-sm ml-2" title="Delete">
+                <span class="material-icons">
+                      <button>Get Started</button>
+                </span>
+            </a>
 
-<div class="container mt-5">
-    <h2>Food Products</h2>
+        </div>
+    </div>
 
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-        <tr>
-            <th>ID</th>
-            <th>SKU</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="foodProduct : ${foodProducts}">
-            <td th:text="${foodProduct.id}"></td>
-            <td th:text="${foodProduct.SKU}"></td>
-            <td th:text="${foodProduct.description}"></td>
-            <td th:text="${foodProduct.category}"></td>
-            <td th:text="${foodProduct.price}"></td>
-            <td>
-                <!-- Edit Button -->
-                <a href="#" class="btn btn-warning btn-sm" title="Edit">
-                    <i class="fas fa-edit"></i>
-                </a>
-
-                <!-- Delete Button -->
-                <a href="#" class="btn btn-danger btn-sm ml-2" title="Delete">
-                    <i class="fas fa-trash-alt"></i>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
 </div>
 
-<!-- Bootstrap JS and Popper.js CDN (required for Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container-wrapper
+    {
+        background:linear-gradient(rgb(26, 8, 8),rgba(0, 0, 0, 0.612)),url("images/bg4.jpg");
+        width: 100vw;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10rem;
+    }
+    .container-wrapper .banner
+    {
+        width:40rem;
+        text-align: center;
+        color: wheat;
+    }
+    .banner h1
+    {
+        color: cyan;
+        text-transform: uppercase;
+
+    }
+    .banner .b
+    {
+        font-style: italic;
+        font-size: medium;
+    }
+    button:active
+    {
+        transform: scale(.9);
+    }
+
+    button
+    {
+    margin-top: 10px;
+    padding: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid cyan;
+    border-radius: .5rem;
+    color: cyan;
+    cursor: pointer;
+
+    }
+
+</style>
 </body>
 </html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="container-wrapper">
+    <div class="cards-container">
+        <div class="card">
+            <h4>All Products</h4>
+            <a href="/foodproducts">View All Products</a>
+        </div>
+        <div class="card">
+            <h4>Add Products</h4>
+            <a href="/addProductForm">Add New Product</a>
+        </div>
+        <div class="card">
+            <h4>Delete Products</h4>
+            <a href="/deleteProductForm">Delete Product</a>
+        </div>
+
+        <!-- customers -->
+        <div class="card c1">
+            <h4>All customers</h4>
+            <a href="/customers">View All Customers</a>
+        </div>
+        <div class="card c1">
+            <h4>Add customers</h4>
+            <a href="/addCustomerForm">Add New Customer</a>
+        </div>
+        <div class="card c1">
+            <h4>Order Products</h4>
+            <a href="/orderProducts">Order Products</a>
+        </div>
+        <!-- users -->
+        <div class="card u1">
+            <h4>Login</h4>
+            <a href="/user/login">Login</a>
+        </div>
+        <div class="card u1">
+            <h4>Logout</h4>
+            <a href="/user/logout">Logout</a>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container-wrapper
+    {
+        background:linear-gradient(rgb(26, 8, 8),rgba(0, 0, 0, 0.612)),url("images/bg4.jpg");
+        width: 100vw;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1rem;
+    }
+
+    .cards-container
+    {
+        width: 80vw;
+        height: 80vh;
+        border: 1px solid cyan;
+        box-shadow: 0px 0px 10px cyan;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: .5rem;
+    }
+    .card
+    {
+
+        padding: 20px;
+        height: 5rem;
+        background-color: rgba(255, 0, 0, 0.738);
+        border-radius:.5rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 1px 1px cyan;
+        cursor: pointer;
+    }
+    .card:active
+    {
+        transform: scale(.9);
+    }
+    .c1
+    {
+        background-color: magenta;
+    }
+    .u1
+    {
+        background-color: brown;
+    }
+    button
+    {
+    margin-top: 10px;
+    padding: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid cyan;
+    border-radius: .5rem;
+    color: cyan;
+    cursor: pointer;
+
+    }
+
+</style>
+</body>
+</html>

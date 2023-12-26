@@ -10,14 +10,30 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * CommandLineRunner implementation for handling interactive commands in the Wholesale Food Store application.
+ */
 @Component
 @AllArgsConstructor
 public class CommandRunnerWorker implements CommandLineRunner {
-   private final CustomerServiceCommandRunner customerServiceCommandRunner;
-   private  final  ProductServiceCommandRunner productServiceCommandRunner;
 
+    private final CustomerServiceCommandRunner customerServiceCommandRunner;
+    private final ProductServiceCommandRunner productServiceCommandRunner;
+
+    /**
+     * Executes the command line runner logic.
+     *
+     * @param args The command line arguments.
+     * @throws Exception if an error occurs during execution.
+     */
     @Override
     public void run(String... args) throws Exception {
+        if (System.console() == null) {
+            // Maven is running in non-interactive mode
+            System.out.println("Maven is running in non-interactive mode. Skipping interactive commands.");
+            return;
+        }
+
         // Your interactive command logic goes here
         System.out.println("THE FOOD STORE\nChoose from these options");
         System.out.println("__________________________________________");
@@ -45,6 +61,7 @@ public class CommandRunnerWorker implements CommandLineRunner {
                     break;
                 case "2":
                     customerServiceCommandRunner.runMenus();
+                    break;
 
                 case "3":
                     System.out.println("Exiting...");
