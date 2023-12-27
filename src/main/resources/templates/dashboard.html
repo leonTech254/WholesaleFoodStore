@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+<div class="container-fluid bg-dark py-4">
+    <div class="container mx-auto mx-md-auto">
+        <h1 class="text-light text-center mb-4">Management System</h1>
+
+        <div class="card shadow p-4">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col mb-3 p-3">
+                    <h4>Welcome to the Dashboard</h4>
+                    <p th:text="'Hello, ' + ${username} + '!'"></p>
+
+                </div>
+                <div class="col mb-3 p-3">
+                    <a href="/user/logout" class="btn btn-danger d-flex align-items-center">
+                        <span class="material-icons me-2">logout</span> Logout
+                    </a>
+                </div>
+            </div>
+<div class="container-fluid bg-dark py-4">
+    <div class="container mx-auto mx-md-auto">
+        <h1 class="text-light text-center mb-4">Management System</h1>
+
+        <div class="card shadow p-4">
+            <div class="cards-container row row-cols-1 row-cols-md-4 g-4">
+                <div class="card col mb-3 p-3">
+                    <h4>All Products</h4>
+                    <a href="/foodproducts" class="btn btn-primary d-flex align-items-center">
+                        <span class="material-icons me-2">list</span> View All Products
+                    </a>
+                </div>
+                <div class="card col mb-3 p-3">
+                    <h4>Add Products</h4>
+                    <a href="/addProductForm" class="btn btn-success d-flex align-items-center">
+                        <span class="material-icons me-2">add</span> Add New Product
+                    </a>
+                </div>
+                <div class="card col mb-3 p-3">
+                    <h4>Delete Products</h4>
+                    <a href="/deleteProductForm" class="btn btn-danger d-flex align-items-center">
+                        <span class="material-icons me-2">delete</span> Delete Product
+                    </a>
+                </div>
+
+                <div class="card col mb-3 p-3">
+                    <h4>Expiring Products</h4>
+                    <a href="/get/all/products/expiry" class="btn btn-warning d-flex align-items-center">
+                        <span class="material-icons me-2">hourglass_empty</span> View Expiring Products
+                    </a>
+                </div>
+
+                <!-- Additional cards -->
+                <div class="card col mb-3 p-3">
+                    <h4>Add User</h4>
+                    <a href="/addUserForm" class="btn btn-info d-flex align-items-center">
+                        <span class="material-icons me-2">person_add</span> Add User
+                    </a>
+                </div>
+                <div class="card col mb-3 p-3">
+                    <h4>View Basket</h4>
+                    <a href="/basket/list" class="btn btn-warning d-flex align-items-center">
+                        <span class="material-icons me-2">shopping_basket</span> View Basket
+                    </a>
+                </div>
+                <div class="card col mb-3 p-3">
+                    <h4>Get All Users</h4>
+                    <a href="/users" class="btn btn-success d-flex align-items-center">
+                        <span class="material-icons me-2">people</span> Get All Users
+                    </a>
+                </div>
+                <!-- End of additional cards -->
+
+                <!-- customers -->
+                <div class="card col mb-3 p-3 c1">
+                    <h4>All customers</h4>
+                    <a href="/customers" class="btn btn-info d-flex align-items-center">
+                        <span class="material-icons me-2">person</span> View All Customers
+                    </a>
+                </div>
+                <div class="card col mb-3 p-3 c1">
+                    <h4>Add customers</h4>
+                    <a href="/addCustomerForm" class="btn btn-warning d-flex align-items-center">
+                        <span class="material-icons me-2">person_add</span> Add New Customer
+                    </a>
+                </div>
+                <div class="card col mb-3 p-3 c1">
+                    <h4>Order Products</h4>
+                    <a href="/orderProducts" class="btn btn-secondary d-flex align-items-center">
+                        <span class="material-icons me-2">shopping_cart</span> Order Products
+                    </a>
+                </div>
+                <!-- users -->
+                <div class="card col mb-3 p-3 u1">
+                    <h4>Login</h4>
+                    <a href="/user/login" class="btn btn-dark d-flex align-items-center">
+                        <span class="material-icons me-2">login</span> Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (Optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

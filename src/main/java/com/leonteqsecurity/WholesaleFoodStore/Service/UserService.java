@@ -91,8 +91,12 @@ public class UserService {
         Optional<User> userOptional = userRepository.userlogin(user.getUsername());
         if (userOptional.isPresent()) {
             User userDB = userOptional.get();
-            return PasswordEncryption.validatePassword(user.getPassword(), userDB.getPassword());
+            boolean passCorrect= PasswordEncryption.validatePassword(user.getPassword(), userDB.getPassword());
+                System.out.println("Incorrect password Please adde"+passCorrect);
+            return  passCorrect;
         } else {
+            System.out.println("Incorrect passworvvvvvvdd Please addepppp");
+
             return false;
         }
     }

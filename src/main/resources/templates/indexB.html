@@ -2,23 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Food Products</title>
-    <link rel="stylesheet" href="css/hello.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZwT"
           crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome CDN for icons -->
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-code.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/material-icons@1.13.12/iconfont/material-icons.min.css">
+
 </head>
 <body>
+<div class="container mt-3">
+    <a th:href="@{/basket}" class="btn btn-outline-dark" title="Basket">
+        <span class="material-icons">shopping_cart</span> Basket
+        <span class="badge badge-pill badge-primary" id="basketCount" th:text="${numBasket}"></span>
+    </a>
+</div>
 
 <div class="container mt-5">
     <h2>Food Products</h2>
 
+    <!-- Search Bar -->
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search by description" id="searchInput">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="searchByDescription()">
+                <span class="material-icons">search</span> Search
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Table -->
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
@@ -30,7 +48,7 @@
             <th>Action</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody th:if="${foodProducts.size() > 0}">
         <tr th:each="foodProduct : ${foodProducts}">
             <td th:text="${foodProduct.id}"></td>
             <td th:text="${foodProduct.SKU}"></td>
@@ -40,18 +58,25 @@
             <td>
                 <!-- Edit Button -->
                 <a href="#" class="btn btn-warning btn-sm" title="Edit">
-                     <span class="material-icons">
-                edit
-                </span>
+                    <span class="material-icons">edit</span>
                 </a>
 
                 <!-- Delete Button -->
                 <a th:href="@{/deleteFoodProduct/{id}(id=${foodProduct.id})}" class="btn btn-danger btn-sm ml-2" title="Delete">
-                <span class="material-icons">
-                    delete
-                </span>
+                    <span class="material-icons">delete</span>
+                </a>
+
+                <!-- Add to Basket Button -->
+                <a th:href="@{/addToBasket(productId=${foodProduct.id}, description=${foodProduct.description}, price=${foodProduct.price})}"
+                   class="btn btn-success btn-sm ml-2" title="Add to Basket">
+                    <span class="material-icons">add_shopping_cart</span>
                 </a>
             </td>
+        </tr>
+        </tbody>
+        <tbody th:if="${foodProducts.size() == 0}">
+        <tr>
+            <td colspan="6" class="text-center">No products available</td>
         </tr>
         </tbody>
     </table>
@@ -67,6 +92,21 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<!-- Custom JavaScript for Search and Basket -->
+<script th:inline="javascript">
+    function searchByDescription() {
+        var keyword = document.getElementById('searchInput').value;
+        window.location.href = '/foodproducts/filterByDescription?keyword=' + keyword;
+    }
+
+   function addToBasket(productId, description, price) {
+    console.log("Function called");
+  window.location.href = '/addToBasket?productId=' + productId +
+            '&description=' + encodeURIComponent(description) +
+            '&price=' + price;
+    }
+</script>
 
 </body>
 </html>

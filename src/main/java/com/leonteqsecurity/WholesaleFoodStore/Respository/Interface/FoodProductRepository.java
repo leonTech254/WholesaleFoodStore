@@ -19,8 +19,9 @@ public interface FoodProductRepository extends JpaRepository<FoodProduct, Intege
     FoodProduct findProduct(int productId);
 
     @Modifying
+    @Transactional
     @Query(value = "DELETE FROM foodproduct WHERE id = ?", nativeQuery = true)
-    boolean deleteProduct(int productId);
+    void deleteProduct(int productId);
 
     @Modifying
     @Transactional

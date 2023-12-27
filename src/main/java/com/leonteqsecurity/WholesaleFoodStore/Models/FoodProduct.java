@@ -1,8 +1,6 @@
 package com.leonteqsecurity.WholesaleFoodStore.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,6 +19,7 @@ public class FoodProduct {
      * The unique identifier for the food product.
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     /**

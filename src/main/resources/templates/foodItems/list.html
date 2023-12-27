@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Food Items</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">All Food Items</h2>
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Food Product</th>
+            <th>Expiry Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="foodItem : ${foodItems}">
+            <td th:text="${foodItem.id}"></td>
+            <td th:text="${foodItem.foodProduct.category}"></td>
+<!--            <td th:text="${#dates.format(foodItem.expiryDate, 'yyyy-MM-dd')}"></td>-->
+            <td th:text="${foodItem.expiryDate}"></td>
+
+            <td>
+                <a th:href="@{/food-items/{id}(id=${foodItem.id})}" class="btn btn-info btn-sm">
+                    <i class="fas fa-eye"></i> View
+                </a>
+                <a th:href="@{/food-items/edit/{id}(id=${foodItem.id})}" class="btn btn-warning btn-sm">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+                <a th:href="@{/food-items/delete/{id}(id=${foodItem.id})}" class="btn btn-danger btn-sm">
+                    <i class="fas fa-trash"></i> Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addFoodItemModal">
+            <i class="fas fa-plus"></i> Add New Food Item
+        </button>
+    </div>
+
+    <!-- Add Food Item Modal -->
+    <div class="modal fade" id="addFoodItemModal" tabindex="-1" aria-labelledby="addFoodItemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addFoodItemModalLabel">Add New Food Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add Food Item Form -->
+                    <form th:action="@{/addFoodItem}" method="post">
+                        <div class="mb-3">
+                            <label for="foodProduct" class="form-label">Food Product</label>
+                            <select id="foodProduct" name="foodProduct.id" class="form-control" required>
+                                <option th:each="product : ${foodProducts}" th:value="${product.id}" th:text="${product.category}"></option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expiryDate" class="form-label">Expiry Date</label>
+                            <input type="date" class="form-control" id="expiryDate" name="expiryDate" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Food Item</button>
+                    </form>
+                    <!-- End of Add Food Item Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js CDN (required for Bootstrap) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
