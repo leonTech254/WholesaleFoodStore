@@ -1,0 +1,29 @@
+body
+{
+background-color:white;
+}
+
+
+.container
+{
+    background-color: rgba(0, 0, 0, 0.259);
+    min-height: 100vh;
+    border-radius: .5rem;
+    padding: 20px;
+}
+table
+{
+    width: 90%;
+    margin: auto;
+}
+.tbl-title
+{
+    text-transform: uppercase;
+}
+
+
+table th,table td
+{
+    padding: 10px;
+}
+

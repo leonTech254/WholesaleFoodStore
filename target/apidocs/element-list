@@ -1,0 +1,7 @@
+com.leonteqsecurity.WholesaleFoodStore
+com.leonteqsecurity.WholesaleFoodStore.CMD
+com.leonteqsecurity.WholesaleFoodStore.Controllers
+com.leonteqsecurity.WholesaleFoodStore.Models
+com.leonteqsecurity.WholesaleFoodStore.Respository.Interface
+com.leonteqsecurity.WholesaleFoodStore.Security
+com.leonteqsecurity.WholesaleFoodStore.Service

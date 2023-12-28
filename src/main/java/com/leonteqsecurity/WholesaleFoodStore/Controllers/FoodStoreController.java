@@ -39,7 +39,7 @@ public class FoodStoreController {
     @GetMapping("/")
     public String indexPage(Model model) {
 
-        return "index";
+        return "home";
     }
 
     @GetMapping("/foodproducts")

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="container-wrapper">
+    <div class="banner">
+        <h1 class="heading-title">Whole Sale Food Product<br> <span class="b">Management System</span> </h1>
+        <p>Welcome to our sophisticated web-based wholesale stock control and ordering system tailored for the dynamic food industry. Designed with precision and efficiency in mind, our platform offers a seamless experience for managing your food products inventory and streamlining your ordering processes.</p>
+        <p>Effortlessly explore and navigate through our comprehensive features, allowing you to add, update, and delete food products with ease. Our system empowers you with the tools needed to maintain accurate stock levels and make informed decisions for your business.</p>
+        <p>Experience the convenience of a user-friendly interface that ensures a smooth interaction, whether you are accessing the system through our web interface or console menu. Our goal is to provide you with a powerful and reliable solution to meet the demands of your wholesale food business.</p>
+        <div>
+        <div>
+            <a href="/user/login" class="btn btn-danger btn-sm ml-2">
+                <span class="material-icons">
+                      <button>Get Started</button>
+                </span>
+            </a>
+
+        </div>
+    </div>
+
+</div>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .container-wrapper
+    {
+        background:linear-gradient(rgb(26, 8, 8),rgba(0, 0, 0, 0.612)),url("images/bg4.jpg");
+        width: 100vw;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10rem;
+    }
+    .container-wrapper .banner
+    {
+        width:40rem;
+        text-align: center;
+        color: wheat;
+    }
+    .banner h1
+    {
+        color: cyan;
+        text-transform: uppercase;
+
+    }
+    .banner .b
+    {
+        font-style: italic;
+        font-size: medium;
+    }
+    button:active
+    {
+        transform: scale(.9);
+    }
+
+    button
+    {
+    margin-top: 10px;
+    padding: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid cyan;
+    border-radius: .5rem;
+    color: cyan;
+    cursor: pointer;
+
+    }
+
+</style>
+</body>
+</html>
